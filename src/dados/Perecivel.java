@@ -13,12 +13,12 @@ public class Perecivel extends Doacao {
     }
 
     public TipoPerecivel getTipoPerecivel(){
-        return tipoPerecivel;
+        return this.tipoPerecivel;
     }
 
     @Override
     public String geraResumo(){
-        return null;
+        return getDescricao() + "," + getValor() + "," + getQuantidade() + "," + this.validade + "," + this.tipoPerecivel + ",";
     }
     
 }
