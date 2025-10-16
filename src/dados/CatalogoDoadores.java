@@ -18,7 +18,7 @@ public class CatalogoDoadores {
         }
 
  
-    public void lerArquivo(){
+    public void lerArquivoDoadores() throws Exception {
         Path path = Paths.get("recursos" , "doadores.csv"); 
         try (BufferedReader br = Files.newBufferedReader(path,
                 Charset.forName("UTF8"))) {
@@ -31,6 +31,14 @@ public class CatalogoDoadores {
                 nome = sc.next();
                 email = sc.next();
 
+                Doador d = new Doador (nome, email);
+
+                if (existeEmail(email)) {
+                throw new Exception("1 : ERRO : doador repetido");
+            }
+                doadores.add(d);
+                System.out.println("1 : " + nome + " , " + email);
+
             }
         }
         catch (IOException e) {
@@ -38,6 +46,16 @@ public class CatalogoDoadores {
         }
 
     }
+
+    public boolean existeEmail(String email) {
+    for (Doador d : doadores) {
+        if (d.getEmail().equalsIgnoreCase(email)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 }
     
