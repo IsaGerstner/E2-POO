@@ -4,8 +4,8 @@ public class Duravel extends Doacao {
 
     private TipoDuravel tipoDuravel;
 
-    public Duravel(String descricao, double valor, int quantidade, TipoDuravel tipoDuravel){
-        super ( descricao, valor, quantidade);
+    public Duravel(String descricao, double valor, int quantidade, TipoDuravel tipoDuravel, Doador doador){
+        super ( descricao, valor, quantidade, doador);
         this.tipoDuravel = tipoDuravel;
     }
 

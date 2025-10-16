@@ -17,7 +17,7 @@ public class CatalogoDoadores {
             doadores = new ArrayList<>();
         }
 
-            
+ 
     public void lerArquivo(){
         Path path = Paths.get("recursos" , "doadores.csv"); 
         try (BufferedReader br = Files.newBufferedReader(path,
@@ -30,7 +30,6 @@ public class CatalogoDoadores {
                 String email;
                 nome = sc.next();
                 email = sc.next();
-               
 
             }
         }

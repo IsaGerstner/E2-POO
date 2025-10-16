@@ -6,16 +6,18 @@ public abstract class Doacao {
     private int quantidade;
     private Doador doador;
 
-    public Doador getDoador(){
-        return null;
-    }
-
     public abstract String geraResumo();
 
-    public Doacao(String descricao, double valor, int quantidade){
+    public Doacao(String descricao, double valor, int quantidade, Doador doador){
         this.descricao = descricao;
         this.valor = valor;
         this.quantidade = quantidade;
+        this.doador = doador;
+    }
+
+
+    public Doador getDoador(){
+        return this.doador;
     }
 
     public String getDescricao (){
