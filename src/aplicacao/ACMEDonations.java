@@ -9,9 +9,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import dados.CatalogoDoadores;
+import dados.Doacao;
 import dados.CatalogoDoacoes;
 import dados.Doador;
 import dados.Perecivel;
+
 
 public class ACMEDonations {
 
@@ -25,6 +27,7 @@ public class ACMEDonations {
 
     public ACMEDonations(){
         catalogoDoadores = new CatalogoDoadores();
+        catalogoDoacoes = new CatalogoDoacoes(catalogoDoadores);
         redirecionaEntrada();
         redirecionaSaida();
 
@@ -53,23 +56,15 @@ public class ACMEDonations {
 
     public void executar(){
         passo1();
+        passo2();
        
 
     }
 
     private void passo1(){
-        try{
-
-            catalogoDoadores.lerArquivoDoadores();
-
-            for (Doador d : catalogoDoadores.getDoadores()) {
-                System.out.println("1:" + d.getNome() + "," + d.getEmail());
+            for (String s : catalogoDoadores.lerArquivoDoadores()) {
+                System.out.println(s);
             }
-
-        } catch(Exception e){
-            System.out.println(e.getMessage());
-        
-        }
         
     }
 
@@ -77,8 +72,11 @@ public class ACMEDonations {
         try{
             catalogoDoacoes.LerArquivoDoacoesPereciveis();
 
-            for (Perecivel p : catalogoDoacoes.getDoacoes()){
-                System.out.println("2:" + p.getDescricao() + "," + p.getValor() + "," + p.getQuantidade() + "," + p.getTipoPerecivel());
+            for (Doacao d : catalogoDoacoes.getDoacoes()){
+                if (d instanceof Perecivel){
+                Perecivel p = (Perecivel) d; 
+                    System.out.println("2:" + p.getDescricao() + "," + p.getValor() + "," + p.getQuantidade() + "," + p.getTipoPerecivel() + "," + p.getValidade());
+                }
             }
 
         } catch (Exception e){

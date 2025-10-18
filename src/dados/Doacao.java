@@ -32,6 +32,7 @@ public abstract class Doacao {
         return this.quantidade;
     }
 
+
     public void setDescricao(String descricao){
         this.descricao = descricao;
     }

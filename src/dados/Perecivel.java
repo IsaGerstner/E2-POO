@@ -16,6 +16,10 @@ public class Perecivel extends Doacao {
         return this.tipoPerecivel;
     }
 
+    public int getValidade(){
+        return this.validade;
+    }
+
     @Override
     public String geraResumo(){
         return getDescricao() + "," + getValor() + "," + getQuantidade() + "," + this.validade + "," + this.tipoPerecivel + ",";
