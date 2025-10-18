@@ -17,12 +17,19 @@ public class CatalogoDoadores {
             doadores = new ArrayList<>();
         }
 
+    public List<Doador> getDoadores() {
+        return doadores;
+    }
+
  
     public void lerArquivoDoadores() throws Exception {
-        Path path = Paths.get("recursos" , "doadores.csv"); 
+        Path path = Paths.get("recursos" , "doadores.csv");
+
         try (BufferedReader br = Files.newBufferedReader(path,
                 Charset.forName("UTF8"))) {
+
             String linha = null;
+
             while ((linha = br.readLine()) != null) {
                 // separador: ;
                 Scanner sc = new Scanner(linha).useDelimiter(";");
@@ -31,32 +38,36 @@ public class CatalogoDoadores {
                 nome = sc.next();
                 email = sc.next();
 
-                Doador d = new Doador (nome, email);
+                for (Doador d : doadores) {
+                    if (d.getEmail().equalsIgnoreCase(email)) {
+                    
+                        throw new Exception("1:ERRO:doador repetido");
+                    }
+                }
 
-                if (existeEmail(email)) {
-                throw new Exception("1 : ERRO : doador repetido");
-            }
+                Doador d = new Doador (nome, email);
                 doadores.add(d);
-                System.out.println("1 : " + nome + " , " + email);
 
             }
         }
         catch (IOException e) {
-            System.err.format("Erro de E/S: %s%n", e);
+            throw new Exception("Erro de E/S: %s%n", e);
         }
 
     }
 
-    public boolean existeEmail(String email) {
-    for (Doador d : doadores) {
-        if (d.getEmail().equalsIgnoreCase(email)) {
-            return true;
+    public Doador buscarPorEmail(String email) {
+        for (Doador d : doadores) {
+            if (d.getEmail().equalsIgnoreCase(email)) {
+                return d;
+            }
         }
+        return null;
     }
-    return false;
 }
 
 
-}
+
+
     
 

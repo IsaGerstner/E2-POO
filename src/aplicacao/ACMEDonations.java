@@ -9,6 +9,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import dados.CatalogoDoadores;
+import dados.CatalogoDoacoes;
+import dados.Doador;
+import dados.Perecivel;
 
 public class ACMEDonations {
 
@@ -18,6 +21,7 @@ public class ACMEDonations {
     private final String nomeArquivoSaida = "relatorio.txt";  
 
     private CatalogoDoadores catalogoDoadores;
+    private CatalogoDoacoes catalogoDoacoes;
 
     public ACMEDonations(){
         catalogoDoadores = new CatalogoDoadores();
@@ -48,26 +52,43 @@ public class ACMEDonations {
     }
 
     public void executar(){
-        passo1(null, null);
+        passo1();
        
 
     }
 
-    private void passo1(String nome, String email){
+    private void passo1(){
         try{
+
             catalogoDoadores.lerArquivoDoadores();
+
+            for (Doador d : catalogoDoadores.getDoadores()) {
+                System.out.println("1:" + d.getNome() + "," + d.getEmail());
+            }
+
         } catch(Exception e){
             System.out.println(e.getMessage());
+        
         }
-        System.out.println("DEBUG: "+ nome + "-" + email); // o que seria esse debug?? printa no terminal null-null
-
+        
     }
 
     private void passo2(){
+        try{
+            catalogoDoacoes.LerArquivoDoacoesPereciveis();
+
+            for (Perecivel p : catalogoDoacoes.getDoacoes()){
+                System.out.println("2:" + p.getDescricao() + "," + p.getValor() + "," + p.getQuantidade() + "," + p.getTipoPerecivel());
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
-
-
-    
-    
 }
+
+
+    
+    
+
