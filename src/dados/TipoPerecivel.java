@@ -10,7 +10,7 @@ public enum TipoPerecivel {
         this.tipo = tipo;
     }
 
-    public String getNome(){
+    public String getTipo(){
         return this.tipo;
     }
 

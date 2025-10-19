@@ -3,3 +3,14 @@
 1:ERRO:doador repetido.
 1:ERRO:formato invalido.
 1:ERRO:doador repetido.
+2:ERRO:doador inexistente.
+2:ERRO:formato invalido.
+2:Aspirina,22.22,2,MEDICAMENTO,22
+2:ERRO:formato invalido.
+2:ERRO:tipo invalido.
+3:ERRO:tipo invalido.
+3:ERRO:formato invalido.
+3:ERRO:formato invalido.
+3:ERRO:formato invalido.
+3:Mesa,66.66,6,MOVEL
+4:ERRO:e-mail inexistente.

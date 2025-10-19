@@ -6,14 +6,14 @@ public enum TipoDuravel {
     ELETRODOMESTICO("ELETRODOMESTICO"),
     MOVEL("MOVEL");
 
-    private final String nome;
+    private final String tipo;
 
-    private TipoDuravel(String nome){
-        this.nome = nome;
+    private TipoDuravel(String tipo){
+        this.tipo = tipo;
     } 
 
-    public String getNome(){
-        return this.nome;
+    public String getTipo(){
+        return this.tipo;
     }
     
 }

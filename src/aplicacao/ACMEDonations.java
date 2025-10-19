@@ -44,6 +44,8 @@ public class ACMEDonations {
     public void executar(){
         passo1();
         passo2();
+        passo3();
+        passo4(null);
     }
 
     private void passo1(){
@@ -53,9 +55,21 @@ public class ACMEDonations {
     }
 
     private void passo2(){
-        for (String m : catalogoDoacoes.LerArquivoDoacoesPereciveis()){
-            System.out.println(m);
+        for (String p : catalogoDoacoes.LerArquivoDoacoesPereciveis()){
+            System.out.println(p);
 
+        }
+    }
+
+    private void passo3(){
+        for (String d : catalogoDoacoes.LerArquivoDoacoesDuraveis()){
+            System.out.println(d);
+        }
+    }
+
+    private void passo4(String email){
+        for (String e : catalogoDoadores.MostrarDoadorPorEmail(email)){
+            System.out.println(e);
         }
     }
 }

@@ -73,4 +73,28 @@ public class CatalogoDoadores {
         }
         return null;
     }
+
+    public List<String> MostrarDoadorPorEmail(String email){
+
+        List<String> mensagens = new ArrayList<>();
+
+        Path path = Paths.get("recursos", "dadosentrada.txt");
+
+        try (BufferedReader br = Files.newBufferedReader(path,
+                Charset.forName("UTF8"))) {
+
+            String linha = null;
+            Doador d = buscarPorEmail(email);
+
+            if (d == null){
+                mensagens.add("4:ERRO:e-mail inexistente.");
+            } else {
+                    mensagens.add("4:" + d.getNome() + "," + d.getEmail());
+            }
+        } catch (IOException e) {
+            mensagens.add("Erro de E/S: %s%n" + e);
+        }
+        return mensagens;
+        
+    }
 }
