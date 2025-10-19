@@ -18,8 +18,7 @@ import dados.Perecivel;
 public class ACMEDonations {
 
      private Scanner entrada = new Scanner(System.in);  
-    private PrintStream saidaPadrao = System.out;   
-    private final String nomeArquivoEntrada = "dadosentrada.txt";  
+    private PrintStream saidaPadrao = System.out;    
     private final String nomeArquivoSaida = "relatorio.txt";  
 
     private CatalogoDoadores catalogoDoadores;
@@ -28,20 +27,8 @@ public class ACMEDonations {
     public ACMEDonations(){
         catalogoDoadores = new CatalogoDoadores();
         catalogoDoacoes = new CatalogoDoacoes(catalogoDoadores);
-        redirecionaEntrada();
         redirecionaSaida();
 
-    }
-
-    private void redirecionaEntrada() {
-        try {
-            BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosentrada.txt"));
-            entrada = new Scanner(streamEntrada);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        Locale.setDefault(Locale.ENGLISH);
-        entrada.useLocale(Locale.ENGLISH);
     }
 
     private void redirecionaSaida() {
@@ -57,32 +44,19 @@ public class ACMEDonations {
     public void executar(){
         passo1();
         passo2();
-       
-
     }
 
     private void passo1(){
-            for (String s : catalogoDoadores.lerArquivoDoadores()) {
-                System.out.println(s);
+        for (String s : catalogoDoadores.lerArquivoDoadores()) {
+            System.out.println(s);
             }
-        
     }
 
     private void passo2(){
-        try{
-            catalogoDoacoes.LerArquivoDoacoesPereciveis();
+        for (String m : catalogoDoacoes.LerArquivoDoacoesPereciveis()){
+            System.out.println(m);
 
-            for (Doacao d : catalogoDoacoes.getDoacoes()){
-                if (d instanceof Perecivel){
-                Perecivel p = (Perecivel) d; 
-                    System.out.println("2:" + p.getDescricao() + "," + p.getValor() + "," + p.getQuantidade() + "," + p.getTipoPerecivel() + "," + p.getValidade());
-                }
-            }
-
-        } catch (Exception e){
-            System.out.println(e.getMessage());
         }
-
     }
 }
 

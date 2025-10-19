@@ -3,4 +3,3 @@
 1:ERRO:doador repetido.
 1:ERRO:formato invalido.
 1:ERRO:doador repetido.
-2:ERRO:doador inexistente.

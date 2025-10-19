@@ -4,14 +4,14 @@ public enum TipoPerecivel {
     ALIMENTO ("ALIMENTO"),
 	MEDICAMENTO ("MEDICAMENTO");
 
-    private final String nome;
+    private final String tipo;
 
-    private TipoPerecivel(String nome){
-        this.nome = nome;
+    private TipoPerecivel(String tipo){
+        this.tipo = tipo;
     }
 
     public String getNome(){
-        return this.nome;
+        return this.tipo;
     }
 
     
