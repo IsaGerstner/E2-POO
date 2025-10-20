@@ -1,25 +1,17 @@
 package aplicacao;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.Locale;
-import java.util.Scanner;
 
 import dados.CatalogoDoadores;
-import dados.Doacao;
 import dados.CatalogoDoacoes;
-import dados.Doador;
-import dados.Perecivel;
 
 
 public class ACMEDonations {
-
-     private Scanner entrada = new Scanner(System.in);  
-    private PrintStream saidaPadrao = System.out;    
-    private final String nomeArquivoSaida = "relatorio.txt";  
+ 
+    private PrintStream saidaPadrao = System.out;     
 
     private CatalogoDoadores catalogoDoadores;
     private CatalogoDoacoes catalogoDoacoes;
@@ -33,7 +25,7 @@ public class ACMEDonations {
 
     private void redirecionaSaida() {
         try {
-            saidaPadrao = new PrintStream(new File("relatorio.txt"), Charset.forName("UTF-8"));
+            saidaPadrao = new PrintStream(new File("recursos" , "relatorio.txt"), Charset.forName("UTF-8"));
             System.setOut(saidaPadrao);
         } catch (Exception e) {
             System.out.println(e);
@@ -45,7 +37,13 @@ public class ACMEDonations {
         passo1();
         passo2();
         passo3();
-        passo4(null);
+        passo4();
+        passo5();
+        passo6();
+        passo7();
+        passo8();
+        passo9();
+        passo10();
     }
 
     private void passo1(){
@@ -55,23 +53,61 @@ public class ACMEDonations {
     }
 
     private void passo2(){
-        for (String p : catalogoDoacoes.LerArquivoDoacoesPereciveis()){
-            System.out.println(p);
+        for (String s : catalogoDoacoes.lerArquivoDoacoesPereciveis()){
+            System.out.println(s);
 
         }
     }
 
     private void passo3(){
-        for (String d : catalogoDoacoes.LerArquivoDoacoesDuraveis()){
-            System.out.println(d);
+        for (String s : catalogoDoacoes.lerArquivoDoacoesDuraveis()){
+            System.out.println(s);
         }
     }
 
-    private void passo4(String email){
-        for (String e : catalogoDoadores.MostrarDoadorPorEmail(email)){
-            System.out.println(e);
+    private void passo4(){
+            for (String s : catalogoDoadores.mostrarDoadorPorEmail()) {
+                System.out.println(s);
+            }
+        }
+
+    private void passo5(){
+        for (String s : catalogoDoacoes.mostrarDoacoes()){
+            System.out.println(s);
         }
     }
+
+   private void passo6() {
+        for (String s : catalogoDoadores.mostrarTodosDoadores(catalogoDoacoes.getDoacoes())) {
+            System.out.println(s);
+        }
+    }
+
+   private void passo7() {
+        for (String s : catalogoDoacoes.mostrarDoacoesPorNome()) {
+            System.out.println(s);
+        }
+    }
+
+     private void passo8() {
+        for (String s : catalogoDoacoes.mostarDoacoesDuraveisPorTipo()) {
+            System.out.println(s);
+        }
+    }
+
+     private void passo9() {
+        for (String s : catalogoDoacoes.mostrarPerecivelMaiorQuantidade()) {
+            System.out.println(s);
+        }
+    }
+
+    private void passo10() {
+        for (String s : catalogoDoadores.mostrarDoadorComMaiorSomatorioDeValoresDoados(catalogoDoacoes.getDoacoes())) {
+            System.out.println(s);
+        }
+    }
+
+
 }
 
 

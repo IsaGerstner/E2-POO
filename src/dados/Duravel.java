@@ -14,7 +14,7 @@ public class Duravel extends Doacao {
     }
 
     public String geraResumo(){
-     return getDescricao() + "," + getValor() + "," + getQuantidade() + ","  + this.tipoDuravel + ",";
+     return getDescricao() + "," + getValor() + "," + getQuantidade() + ","  + this.tipoDuravel;
     }
     
 }

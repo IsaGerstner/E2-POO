@@ -2,6 +2,7 @@ package dados;
 
 public class Perecivel extends Doacao {
 
+    public static Object getTipo;
     private int validade;
     private TipoPerecivel tipoPerecivel;
 
@@ -20,9 +21,9 @@ public class Perecivel extends Doacao {
         return this.validade;
     }
 
-    @Override
+    @Override 
     public String geraResumo(){
-        return getDescricao() + "," + getValor() + "," + getQuantidade() + "," + this.validade + "," + this.tipoPerecivel + ",";
+        return getDescricao() + "," + getValor() + "," + getQuantidade() +  "," + this.tipoPerecivel + "," + this.validade ;
     }
     
 }
