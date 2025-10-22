@@ -8,15 +8,14 @@ import java.util.Locale;
 import dados.CatalogoDoadores;
 import dados.CatalogoDoacoes;
 
-
 public class ACMEDonations {
- 
-    private PrintStream saidaPadrao = System.out;     
+
+    private PrintStream saidaPadrao = System.out;
 
     private CatalogoDoadores catalogoDoadores;
     private CatalogoDoacoes catalogoDoacoes;
 
-    public ACMEDonations(){
+    public ACMEDonations() {
         catalogoDoadores = new CatalogoDoadores();
         catalogoDoacoes = new CatalogoDoacoes(catalogoDoadores);
         redirecionaSaida();
@@ -25,7 +24,7 @@ public class ACMEDonations {
 
     private void redirecionaSaida() {
         try {
-            saidaPadrao = new PrintStream(new File("recursos" , "relatorio.txt"), Charset.forName("UTF-8"));
+            saidaPadrao = new PrintStream(new File("recursos", "relatorio.txt"), Charset.forName("UTF-8"));
             System.setOut(saidaPadrao);
         } catch (Exception e) {
             System.out.println(e);
@@ -33,7 +32,7 @@ public class ACMEDonations {
         Locale.setDefault(Locale.ENGLISH);
     }
 
-    public void executar(){
+    public void executar() {
         passo1();
         passo2();
         passo3();
@@ -46,56 +45,56 @@ public class ACMEDonations {
         passo10();
     }
 
-    private void passo1(){
+    private void passo1() {
         for (String s : catalogoDoadores.lerArquivoDoadores()) {
             System.out.println(s);
-            }
+        }
     }
 
-    private void passo2(){
-        for (String s : catalogoDoacoes.lerArquivoDoacoesPereciveis()){
+    private void passo2() {
+        for (String s : catalogoDoacoes.lerArquivoDoacoesPereciveis()) {
             System.out.println(s);
 
         }
     }
 
-    private void passo3(){
-        for (String s : catalogoDoacoes.lerArquivoDoacoesDuraveis()){
+    private void passo3() {
+        for (String s : catalogoDoacoes.lerArquivoDoacoesDuraveis()) {
             System.out.println(s);
         }
     }
 
-    private void passo4(){
-            for (String s : catalogoDoadores.mostrarDoadorPorEmail()) {
-                System.out.println(s);
-            }
-        }
-
-    private void passo5(){
-        for (String s : catalogoDoacoes.mostrarDoacoes()){
+    private void passo4() {
+        for (String s : catalogoDoadores.mostrarDoadorPorEmail()) {
             System.out.println(s);
         }
     }
 
-   private void passo6() {
+    private void passo5() {
+        for (String s : catalogoDoacoes.mostrarDoacoes()) {
+            System.out.println(s);
+        }
+    }
+
+    private void passo6() {
         for (String s : catalogoDoadores.mostrarTodosDoadores(catalogoDoacoes.getDoacoes())) {
             System.out.println(s);
         }
     }
 
-   private void passo7() {
+    private void passo7() {
         for (String s : catalogoDoacoes.mostrarDoacoesPorNome()) {
             System.out.println(s);
         }
     }
 
-     private void passo8() {
+    private void passo8() {
         for (String s : catalogoDoacoes.mostarDoacoesDuraveisPorTipo()) {
             System.out.println(s);
         }
     }
 
-     private void passo9() {
+    private void passo9() {
         for (String s : catalogoDoacoes.mostrarPerecivelMaiorQuantidade()) {
             System.out.println(s);
         }
@@ -107,10 +106,4 @@ public class ACMEDonations {
         }
     }
 
-
 }
-
-
-    
-    
-

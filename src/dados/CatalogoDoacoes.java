@@ -43,7 +43,7 @@ public class CatalogoDoacoes {
                     String valorStr = sc.next();
                     String quantidadeStr = sc.next();
                     String email = sc.next();
-                    String tipo = sc.next();
+                    String nome = sc.next();
                     String validadeStr = sc.next();
 
                     double valor;
@@ -64,9 +64,9 @@ public class CatalogoDoacoes {
                     }
                     TipoPerecivel tipoPerecivel;
 
-                    if (tipo.equals("ALIMENTO")) {
+                    if (nome.equals("ALIMENTO")) {
                         tipoPerecivel = TipoPerecivel.ALIMENTO;
-                    } else if (tipo.equals("MEDICAMENTO")) {
+                    } else if (nome.equals("MEDICAMENTO")) {
                         tipoPerecivel = TipoPerecivel.MEDICAMENTO;
                     } else {
                         mensagens.add("2:ERRO:tipo invalido.");
@@ -110,7 +110,7 @@ public class CatalogoDoacoes {
                     String valorStr = sc.next();
                     String quantidadeStr = sc.next();
                     String email = sc.next();
-                    String tipo = sc.next();
+                    String nome = sc.next();
 
                     double valor;
                     int quantidade;
@@ -129,13 +129,13 @@ public class CatalogoDoacoes {
                     }
                     TipoDuravel tipoDuravel;
 
-                    if (tipo.equals("ROUPA")) {
+                    if (nome.equals("ROUPA")) {
                         tipoDuravel = TipoDuravel.ROUPA;
-                    } else if (tipo.equals("BRINQUEDO")) {
+                    } else if (nome.equals("BRINQUEDO")) {
                         tipoDuravel = TipoDuravel.BRINQUEDO;
-                    } else if (tipo.equals("ELETRODOMESTICO")) {
+                    } else if (nome.equals("ELETRODOMESTICO")) {
                         tipoDuravel = TipoDuravel.ELETRODOMESTICO;
-                    } else if (tipo.equals("MOVEL")) {
+                    } else if (nome.equals("MOVEL")) {
                         tipoDuravel = TipoDuravel.MOVEL;
                     } else {
                         mensagens.add("3:ERRO:tipo invalido.");
@@ -168,7 +168,6 @@ public class CatalogoDoacoes {
 
         try (BufferedReader br = Files.newBufferedReader(path,
                 Charset.forName("UTF8"))) {
-
 
             if (doacoes.isEmpty()) {
                 mensagens.add("5:nenhuma doacao encontrada.");
@@ -245,15 +244,16 @@ public class CatalogoDoacoes {
             for (Doacao doa : doacoes) {
                 if (doa instanceof Duravel) {
                     Duravel dur = (Duravel) doa;
-                    if (dur.getTipoDuravel().getTipo().equals(tipo)) {
-                        mensagens.add("8:" + dur.geraResumo() + "," + dur.getDoador().getNome() + "," + dur.getDoador().getEmail());
+                    if (dur.getTipoDuravel().getNome().equals(tipo)) {
+                        mensagens.add("8:" + dur.geraResumo() + "," + dur.getDoador().getNome() + ","
+                                + dur.getDoador().getEmail());
 
                     }
 
                 }
 
             }
-            if (mensagens.size() == 0){
+            if (mensagens.size() == 0) {
                 mensagens.add("8:ERRO:nenhuma doacao localizada.");
             }
         } catch (IOException e) {
